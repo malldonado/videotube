@@ -1,49 +1,63 @@
-<?php require_once('includes/config.php') ?>
+<?php require_once("includes/config.php"); ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>VideoTube</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="assets/js/commonActions.js"></script>
-</head>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    <script src="assets/js/commonActions.js"></script>
+
+</head>
 <body>
 
+    <?php 
+    echo 'max_execution_time = ' . (ini_get('max_execution_time')) . "\n";
+    echo 'post_max_size = ' . (ini_get('post_max_size')) . "\n";
+    echo 'upload_max_filesize = ' . (ini_get('upload_max_filesize')) . "\n";
+    echo 'memory_limit = ' . (ini_get('memory_limit')) . "\n";
+
+    ?>
+    
     <div id="pageContainer">
 
         <div id="mastHeadContainer">
             <button class="navShowHide">
-                <img src="assets/images/icons/menu.png" alt="">
+                <img src="assets/images/icons/menu.png">
             </button>
+
             <a class="logoContainer" href="index.php">
-                <img src="assets/images/icons/VideoTubeLogo.png" title="title" alt="Site logo">
+                <img src="assets/images/icons/VideoTubeLogo.png" title="logo" alt="Site logo">
             </a>
+
             <div class="searchBarContainer">
                 <form action="search.php" method="GET">
                     <input type="text" class="searchBar" name="term" placeholder="Search...">
                     <button class="searchButton">
-                        <img src="assets/images/icons/search.png" alt="">
+                        <img src="assets/images/icons/search.png">
                     </button>
                 </form>
             </div>
+
             <div class="rightIcons">
                 <a href="upload.php">
-                    <img class="upload" src="assets/images/icons/upload.png" alt="">
+                    <img class="upload" src="assets/images/icons/upload.png">
                 </a>
                 <a href="#">
-                    <img class="upload" src="assets/images/profilePictures/default.png" alt="">
+                    <img class="upload" src="assets/images/profilePictures/default.png">
                 </a>
             </div>
+
         </div>
 
-        <div id="sideNavContainer" style="display: block;">
-
+        <div id="sideNavContainer" style="display:none;">
+        
         </div>
 
         <div id="mainSectionContainer">
+        
             <div id="mainContentContainer">

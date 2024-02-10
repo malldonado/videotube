@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once("includes/header.php");
 require_once("includes/classes/VideoDetailsFormProvider.php");
 ?>
@@ -9,7 +9,6 @@ require_once("includes/classes/VideoDetailsFormProvider.php");
     <?php
     $formProvider = new VideoDetailsFormProvider($con);
     echo $formProvider->createUploadForm();
-
     ?>
 
 
@@ -17,3 +16,4 @@ require_once("includes/classes/VideoDetailsFormProvider.php");
 
 
 <?php require_once("includes/footer.php"); ?>
+                
