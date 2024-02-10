@@ -2,19 +2,19 @@
 class VideoProcessor {
 
     private $con;
-    private $sizeLimit = 500000000;
-    private $allowedTypes = array("mp4", "flv", "webm", "mkv", "vob", "ogv", "ogg", "avi", "wmv", "mov", "mpeg", "mpg");
-    
-    //private $ffmpegPath = "ffmpeg/mac/regular-xampp/ffmpeg"; // *** MAC (USING REGULAR XAMPP) ***
-    private $ffmpegPath = "ffmpeg/mac/xampp-VM/ffmpeg"; // *** MAC (USING XAMPP VM) ***
-    // private $ffmpegPath = "ffmpeg/linux/ffmpeg"; // *** LINUX ***
-    // private $ffmpegPath = "ffmpeg/windows/ffmpeg.exe"; //  *** WINDOWS ***
-
-    private $ffprobePath = "ffmpeg/mac/xampp-VM/ffprobe";
-
-    public function __construct($con) {
-        $this->con = $con;
-    }
+	private $sizeLimit = 5000000000; 
+	private $allowedTypes = array("mp4", "flv", "webm", "mkv", "vob", "ogg", "avi", "wmv", "mov", "mpeg", "mpg");
+	private $ffmpegPath; 
+						  
+	
+	private $ffprobePath;
+ 
+	public function __construct($con) {
+		$this->con = $con;
+		$this->ffmpegPath = realpath("ffmpeg/bin/ffmpeg.exe");
+		$this->ffprobePath = realpath("ffmpeg/bin/ffprobe.exe");
+		echo "Path: " . realpath("ffmpeg/bin/ffmpeg.exe");
+	}
 
     public function upload($videoUploadData) {
 
@@ -106,6 +106,7 @@ class VideoProcessor {
 
     public function convertVideoToMp4($tempFilePath, $finalFilePath) {
         $cmd = "$this->ffmpegPath -i $tempFilePath $finalFilePath 2>&1";
+        echo $cmd;
 
         $outputLog = array();
         exec($cmd, $outputLog, $returnCode);

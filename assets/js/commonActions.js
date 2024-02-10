@@ -1,14 +1,19 @@
-jQuery(document).ready(function() {
-    jQuery('.navShowHide').on('click', function() {
-        var main = jQuery('#mainSectionContainer');
-        var nav = jQuery('#sideNavContainer');
+$(document).ready(function() {
+    
+    $(".navShowHide").on("click", function() {
+        
+        var main = $("#mainSectionContainer");
+        var nav = $("#sideNavContainer");
 
-        if(main.hasClass('leftPadding')) {
+        if(main.hasClass("leftPadding")) {
             nav.hide();
-        } else {
+        }
+        else {
             nav.show();
         }
 
-        main.toggleClass('leftPadding');
+        main.toggleClass("leftPadding");
+
     });
+
 });
