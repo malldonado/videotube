@@ -15,8 +15,8 @@ require_once("includes/classes/VideoDetailsFormProvider.php");
 </div>
 
 <script>
-$("form").submit(function() {
-    $("#loadingModal").modal("show");
+jQuery("form").submit(function() {
+    jQuery("#loadingModal").modal("show");
 });
 </script>
 
