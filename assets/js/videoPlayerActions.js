@@ -3,9 +3,11 @@ function likeVideo(button, videoId) {
     jQuery.post('ajax/likeVideo.php', {
         videoId: videoId
     }).done(function(data) {
-        // Update the button text with the new number of likes
-        button.innerText = data.likes;
-        // Toggle the 'liked' class on the button
-        button.classList.toggle('likeButton--liked');
+        
+        var likeButton = jQuery(button);
+        var dislikeButton = jQuery(button).sibling('.dislikeButton');
+        
+        likeButton.addClass('active');
+        dislikeButton.removeClass('active');
     });
 }
