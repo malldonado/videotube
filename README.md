@@ -14,7 +14,7 @@
 - Secure user authentication and session management.
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/seu-usuario/videotube.git`
+1. Clone the repository: `git clone https://github.com/malldonado/videotube.git`
 2. Import the database schema using HeidiSQL or similar tools.
 3. Configure database connection in `config.php`.
 4. Start a local server or deploy to your hosting environment.
