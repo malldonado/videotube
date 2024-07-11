@@ -1,4 +1,4 @@
-$(document).ready(function() {
+jQuery(document).ready(function() {
     
     $(".navShowHide").on("click", function() {
         
@@ -17,3 +17,7 @@ $(document).ready(function() {
     });
 
 });
+
+function notSignedIn() {
+    
+}
