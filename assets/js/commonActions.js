@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
     
     $(".navShowHide").on("click", function() {
         
@@ -19,5 +19,5 @@ jQuery(document).ready(function() {
 });
 
 function notSignedIn() {
-    
+    alert("You must be signed in to perform this action");
 }
