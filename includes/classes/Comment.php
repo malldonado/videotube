@@ -22,7 +22,7 @@ class Comment {
     }
 
     public function create() {
-        $id = $this->sqlData['id'];
+        $id = $this->sqlData["id"];
         $videoId = $this->getVideoId();
         $body = $this->sqlData["body"];
         $postedBy = $this->sqlData["postedBy"];
@@ -33,10 +33,10 @@ class Comment {
         $commentControls = $commentControlsObj->create();
 
         $numResponses = $this->getNumberOfReplies();
-
+        
         if($numResponses > 0) {
             $viewRepliesText = "<span class='repliesSection viewReplies' onclick='getReplies($id, this, $videoId)'>
-                                View all $numResponses replies</span>";
+                                    View all $numResponses replies</span>";
         }
         else {
             $viewRepliesText = "<div class='repliesSection'></div>";
@@ -72,7 +72,7 @@ class Comment {
     public function getNumberOfReplies() {
         $query = $this->con->prepare("SELECT count(*) FROM comments WHERE responseTo=:responseTo");
         $query->bindParam(":responseTo", $id);
-        $id = $this->sqlData['id'];
+        $id = $this->sqlData["id"];
         $query->execute();
 
         return $query->fetchColumn();
@@ -219,14 +219,16 @@ class Comment {
     }
 
     public function getReplies() {
-        $query = $this->con->prepare("SELECT * FROM comments WHERE responseTo=commentId ORDER BY datePosted ASC");
+        $query = $this->con->prepare("SELECT * FROM comments WHERE responseTo=:commentId ORDER BY datePosted ASC");
         $query->bindParam(":commentId", $id);
+
         $id = $this->getId();
+
         $query->execute();
 
         $comments = "";
         $videoId = $this->getVideoId();
-        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $comment = new Comment($this->con, $row, $this->userLoggedInObj, $videoId);
             $comments .= $comment->create();
         }

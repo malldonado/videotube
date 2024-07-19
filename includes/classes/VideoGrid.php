@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 class VideoGrid {
 
     private $con, $userLoggedInObj;
@@ -15,7 +14,8 @@ class VideoGrid {
 
         if($videos == null) {
             $gridItems = $this->generateItems();
-        } else {
+        }
+        else {
             $gridItems = $this->generateItemsFromVideos($videos);
         }
 
@@ -25,20 +25,34 @@ class VideoGrid {
             $header = $this->createGridHeader($title, $showFilter);
         }
 
-        return "$header<div class='$this->gridClass'>$gridItems</div>";
+        return "$header
+                <div class='$this->gridClass'>
+                    $gridItems
+                </div>";
     }
-
+    
     public function generateItems() {
         $query = $this->con->prepare("SELECT * FROM videos ORDER BY RAND() LIMIT 15");
+        $query->execute();
+        
+        $elementsHtml = "";
+        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+
+            $video = new Video($this->con, $row, $this->userLoggedInObj);
+            $item = new VideoGridItem($video, $this->largeMode);
+            $elementsHtml .= $item->create();
+        }
+
+        return $elementsHtml;
     }
 
     public function generateItemsFromVideos($videos) {
         
     }
-
-    public function createGridHeader() {
+    
+    public function createGridHeader($title, $showFilter) {
         return "";
     }
-}
 
+}
 ?>
