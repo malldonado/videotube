@@ -28,4 +28,4 @@
 Contributions are welcome! Fork the repository and submit a pull request with your enhancements.
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
